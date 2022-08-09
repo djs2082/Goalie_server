@@ -1,30 +1,35 @@
 const express = require('express');
-const cors = require('cors');
-const cookieSession = require('cookie-session');
+// const cors = require('cors');
+// const cookieSession = require('cookie-session');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose')
 
-dotenv.config();
 
+dotenv.config();
+const expressValidator = require('express-validator');
 const app = express();
+app.use(expressValidator())
 const dbConfig = require('./Config/dbConfig')
 
 let PORT = process.env.PORT || 3000;
 
-app.use(cors())
+// app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(
-    cookieSession({
-        name: "goalie",
-        secret: process.env.COOKIE_SECRET,
-        httpOnly: true
-    })
-)
 
-app.get('/',(req,res) => {
-    res.json({message:"Welcome to Goalie!"})
-})
+
+
+// app.use(
+//     cookieSession({
+//         name: "goalie",
+//         secret: process.env.COOKIE_SECRET,
+//         httpOnly: true
+//     })
+// )
+
+// app.get('/',(req,res) => {
+//     res.json({message:"Welcome to Goalie!"})
+// })
 
 // app.use("/api/users",require('./Routes/users.routes'));
 
@@ -40,5 +45,6 @@ mongoose.connect(dbConfig.url, {
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
 });
-
-app.listen(PORT,()=>console.log("server started"));
+const userRoutes = require('./Routes/users.routes');
+app.use('/', userRoutes);
+app.listen(PORT,()=>console.log(`server started on ${process.env.PORT}`));
