@@ -46,5 +46,5 @@ mongoose.connect(dbConfig.url, {
     console.log('Could not connect to the database. Exiting now...', err);
 });
 const userRoutes = require('./Routes/users.routes');
-app.use('/', userRoutes);
+app.use('/user', userRoutes);
 app.listen(PORT,()=>console.log(`server started on ${process.env.PORT}`));
