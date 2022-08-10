@@ -1,0 +1,11 @@
+version: '3'
+services:
+  goalie-server:
+    build: .
+    working_dir: /goalie
+    command: bash -c "npm start"
+    volumes:
+      - ./:/goalie
+    ports:
+      - '8080:8080'
+

@@ -1,13 +1,21 @@
 {
   "name": "goalie",
   "version": "1.0.0",
-  "description": "",
+  "description": "Manage your goals smartly",
   "main": "app.js",
+
+  "keywords": [
+    "goalie",
+    "goal",
+    "task"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  
   },
-  "author": "",
-  "license": "ISC",
+  "author": "dilipjoshis98@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "async": "^3.2.4",
     "bcryptjs": "^2.4.3",
@@ -20,5 +28,8 @@
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.1",
     "sequelize": "^6.21.3"
+  },
+  "engines": {
+    "node": "15.x"
   }
 }

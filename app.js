@@ -27,9 +27,9 @@ app.use(express.urlencoded({extended:true}));
 //     })
 // )
 
-// app.get('/',(req,res) => {
-//     res.json({message:"Welcome to Goalie!"})
-// })
+app.get('/',(req,res) => {
+    res.json({message:"Welcome to Goalie!"})
+})
 
 // app.use("/api/users",require('./Routes/users.routes'));
 

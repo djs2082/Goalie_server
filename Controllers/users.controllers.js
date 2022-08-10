@@ -45,8 +45,11 @@ class UserController{
                 password: hashedPassword
             }
             
-            let existEmail = await userService.find({email: userData.email, isVerified: true});
-            let existUsername = await userService.find({userName: userData.userName, isVerified: true});
+            let existEmail = await userService.find({email: userData.email});
+            let existUsername = await userService.find({userName: userData.userName});
+            console.log(existEmail)
+            console.log(existUsername)
+
             if(existUsername != undefined && existUsername.length > 0){
                 res.status(409).send(apiResponse({success: false,message: "Username already exists"}));
             }
